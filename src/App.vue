@@ -1,13 +1,9 @@
 <template>
 	<div>
 		<topo />
-		<conteudo v-if="visibilidade">
+		<conteudo>
 			<h3>Conteúdo</h3>
 		</conteudo>
-
-		<button @click="desmontarComponente()">
-			Desmontar Componente Conteudo
-		</button>
 	</div>
 </template>
 
@@ -22,9 +18,7 @@
 			Topo
 		},
 		data() {
-			return {
-				visibilidade: true
-			};
+			return {};
 		},
 		methods: {
 			desmontarComponente() {

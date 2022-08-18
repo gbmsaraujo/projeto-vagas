@@ -23,61 +23,11 @@
 		},
 		data() {
 			return {
-				teste: "O componente foi criado",
 				titulo: "Componente Conteudo",
 				conteudo: "home"
 			};
 		},
-		methods: {
-			atualizarComponente() {
-				this.titulo += "*";
-			}
-		},
-
-		created() {
-			console.log("criad o");
-		}
-		/* beforeCreate() {
-			console.log("Antes de criar", this.teste);
-
-		},
-
-
-		beforeMount() {
-			console.log("Antes de montar");
-		},
-		mounted() {
-			console.log("Montado");
-		},
-		beforeUpdate() {
-				console.log('Antes de Atualizar: ')
-		},
-		updated() {
-				console.log('atualizado' )
-		},
-
-		beforeUnmount() {
-				console.log('antes de destruir')
-		},
-		unmounted() {
-				console.log('destruído')
-		}, */
-		/*
-		errorCaptured(){
-				console.log('Erro Capturado')
-		},
-		renderTracked() {
-				console.log('Re-renderização Rastreada')
-		},
-		renderTriggered() {
-				console.log('R-renderização ativada')
-		},
-		activated() {
-				console.log('Componente ativado')
-		},
-		deactivated() {
-				console.log('Componente desativado')
-		}, */
+		methods: {}
 	};
 </script>
 
