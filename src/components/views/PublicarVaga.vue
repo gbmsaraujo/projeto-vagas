@@ -91,22 +91,19 @@
 					salario: this.salario,
 					modalidade: this.modalidade,
 					tipo: this.tipo,
-					publicacao: `${this.dataPublicacao} às ${this.horaPublicacao}`
+					publicacao: `${this.getDataPublicacao}`
 				});
 
 				localStorage.setItem("vagas", JSON.stringify(vagas));
 
 				alert("Vaga Cadastrada Com Sucesso");
+
 			}
 		},
 		computed: {
-			dataPublicacao() {
+			getDataPublicacao() {
 				const date = new Date();
-				return date.toLocaleDateString();
-			},
-			horaPublicacao() {
-				const date = new Date();
-				return date.toLocaleTimeString("pt-BR").slice(-8);
+				return date.toLocaleDateString("pt-BR");
 			}
 		}
 	};

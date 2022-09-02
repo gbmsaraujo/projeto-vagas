@@ -62,17 +62,6 @@
 		methods: {
 			getUsuariosOnline() {
 				this.usuariosOnline = Math.floor(Math.random() * 101); //entre zero e 100
-			},
-			insertDataPublicacao(arrVagas, date) {
-				return arrVagas.map((vaga) => {
-					if (!vaga.publicacao) {
-						return {
-							...vaga,
-							publicacao: date.toLocaleString("pt-BR")
-						};
-					}
-					return vaga;
-				});
 			}
 		},
 

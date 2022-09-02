@@ -24,13 +24,15 @@
 								class="nav-link"
 								aria-current="page"
 								href="#"
+								@click="navegarPara('Home')"
 								>Home</a
 							>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Publicar Vaga</a>
+							<a class="nav-link" href="#" @click="navegarPara('PublicarVaga')"
+								>Publicar Vaga</a
+							>
 						</li>
-
 					</ul>
 				</div>
 			</div>
@@ -40,7 +42,12 @@
 
 <script>
 	export default {
-		name: "TopoPadrao" //Podemos mudar o nome do nosso componente
+		name: "TopoPadrao", //Podemos mudar o nome do nosso componente
+		methods: {
+			navegarPara(caminho) {
+				this.$emit("navegar", caminho);
+			}
+		}
 	};
 </script>
 

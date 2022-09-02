@@ -1,11 +1,6 @@
 <template>
 	<div>
-		<button @click="conteudo = 'home'">Home</button>
-		<button @click="conteudo = 'publicar-vaga'">Publicar Vaga</button>
-		<!-- <home></home>
-		<publicar-vaga></publicar-vaga> -->
-
-		<!-- Renderizar de forma dinâmica Home e Publicar Vaga (views) -->
+	<h1>{{titulo}}</h1>
 		<keep-alive>
 			<component :is="conteudo" />
 		</keep-alive>
@@ -17,6 +12,12 @@
 	import PublicarVaga from "../views/PublicarVaga.vue";
 	export default {
 		name: "Conteudo",
+		props: {
+			conteudo: {
+				type: String,
+				required: true,
+			}
+		},
 		components: {
 			Home,
 			PublicarVaga
@@ -24,7 +25,6 @@
 		data() {
 			return {
 				titulo: "Componente Conteudo",
-				conteudo: "home"
 			};
 		},
 		methods: {}
