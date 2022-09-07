@@ -54,7 +54,6 @@
 				<div class="form-text">Informe o tipo de contratação</div>
 			</div>
 		</div>
-
 		<div class="row mt-5">
 			<div class="col d-flex flex-column align-items-center">
 				<button
@@ -70,9 +69,12 @@
 </template>
 
 <script>
+	import { useToast } from "vue-toastification";
+	import ToastMessage from "../layouts/ToastMessage.vue";
 	export default {
 		name: "PublicarVaga",
 		data: () => ({
+			toast: useToast(),
 			titulo: "",
 			descricao: "",
 			salario: "",
@@ -85,6 +87,11 @@
 
 				if (!vagas) vagas = [];
 
+				if (!this.verificarCamposPreenchidos) {
+					this.toast.error(this.errorToast);
+					return;
+				}
+
 				vagas.push({
 					titulo: this.titulo,
 					descricao: this.descricao,
@@ -96,14 +103,50 @@
 
 				localStorage.setItem("vagas", JSON.stringify(vagas));
 
-				alert("Vaga Cadastrada Com Sucesso");
+				this.toast.success(this.sucessToast);
 
+				this.limparCamposCadastroVagas();
+			},
+
+			limparCamposCadastroVagas() {
+				(this.titulo = ""),
+					(this.descricao = ""),
+					(this.salario = ""),
+					(this.modalidade = ""),
+					(this.tipo = "");
 			}
 		},
 		computed: {
 			getDataPublicacao() {
 				const date = new Date();
 				return date.toLocaleDateString("pt-BR");
+			},
+			sucessToast() {
+				return {
+					component: ToastMessage,
+					props: {
+						tituloToast: "Uhul",
+						descricaoToast: "Vaga cadastrada com sucesso! :)"
+					}
+				};
+			},
+			errorToast() {
+				return {
+					component: ToastMessage,
+					props: {
+						tituloToast: "Opa!",
+						descricaoToast: "Preencha corretamente sua vaga :("
+					}
+				};
+			},
+			verificarCamposPreenchidos() {
+				return this.titulo &&
+					this.descricao &&
+					this.salario &&
+					this.modalidade &&
+					this.tipo
+					? true
+					: false;
 			}
 		}
 	};

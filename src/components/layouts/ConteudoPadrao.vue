@@ -1,6 +1,5 @@
 <template>
 	<div>
-	<h1>{{titulo}}</h1>
 		<keep-alive>
 			<component :is="conteudo" />
 		</keep-alive>
@@ -22,12 +21,6 @@
 			Home,
 			PublicarVaga
 		},
-		data() {
-			return {
-				titulo: "Componente Conteudo",
-			};
-		},
-		methods: {}
 	};
 </script>
 

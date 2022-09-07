@@ -1,6 +1,22 @@
 <template>
 	<div class="card">
-		<div class="card-header bg-dark text-white">{{ titulo }}</div>
+		<div class="card-header bg-dark text-white">
+			<div class="row">
+				<div class="col d-flex justify-content-between">
+					<div>{{ titulo }}</div>
+					<div>
+						<div class="form-check form-switch">
+							<input
+								class="form-check-input"
+								type="checkbox"
+								v-model="favoritada"
+							/>
+							<label class="form-check-label">Favoritar</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="card-body">
 			<p>{{ descricao }}</p>
 		</div>
@@ -46,12 +62,26 @@
 				required: true
 			}
 		},
+		data: () => ({
+				favoritada: false
+			}),
+
 		computed: {
 			getModalidade() {
 				return this.modalidade === "1" ? "Home-Office" : "Presencial";
 			},
 			getTipo() {
 				return this.tipo === "1" ? "CLT" : "PJ";
+			}
+		},
+		methods:{
+			dispararEventComMitt(){
+				this.emitter.emit('eventoGlobal1', 'Teste Captura evento com mitt')
+			}
+		},
+		watch:{
+			favoritada(newValue){
+				newValue ? this.emitter.emit('favoritarVaga', this.titulo) : this.emitter.emit('desfavoritarVaga', this.titulo)
 			}
 		}
 	};

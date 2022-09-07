@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<vagas-favoritas />
 		<topo @navegar="navegarPara($event)" />
 		<conteudo :conteudo="view" />
 	</div>
@@ -7,12 +8,14 @@
 <script>
 	import Conteudo from "@/components/layouts/ConteudoPadrao.vue";
 	import Topo from "@/components/layouts/Topo.vue";
+	import VagasFavoritas from "./components/shared/VagasFavoritas.vue";
 
 	export default {
 		name: "App",
 		components: {
 			Conteudo,
-			Topo
+			Topo,
+			VagasFavoritas
 		},
 		data() {
 			return {
@@ -24,7 +27,7 @@
 				this.visibilidade = false;
 			},
 			navegarPara(view) {
-				this.view = view
+				this.view = view;
 			}
 		}
 	};
