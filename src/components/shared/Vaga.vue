@@ -36,10 +36,10 @@
 			titulo: {
 				type: String,
 				required: true,
-				validator(p) {
+				/* validator(p) {
 					if (p.length < 6) return false;
 					return true;
-				}
+				} */
 			},
 			descricao: {
 				type: String,
@@ -75,13 +75,18 @@
 			}
 		},
 		methods:{
-			dispararEventComMitt(){
-				this.emitter.emit('eventoGlobal1', 'Teste Captura evento com mitt')
+			emitirAlerta(favoritada){
+				if(favoritada){
+					console.log(this.favoritada)
+					this.emitter.emit('alerta')
+				}
 			}
 		},
 		watch:{
 			favoritada(newValue){
 				newValue ? this.emitter.emit('favoritarVaga', this.titulo) : this.emitter.emit('desfavoritarVaga', this.titulo)
+
+				this.emitirAlerta(newValue)
 			}
 		}
 	};

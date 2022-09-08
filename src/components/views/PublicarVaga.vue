@@ -109,7 +109,7 @@
 			},
 
 			limparCamposCadastroVagas() {
-				(this.titulo = ""),
+					(this.titulo = ""),
 					(this.descricao = ""),
 					(this.salario = ""),
 					(this.modalidade = ""),
@@ -125,8 +125,8 @@
 				return {
 					component: ToastMessage,
 					props: {
-						tituloToast: "Uhul",
-						descricaoToast: "Vaga cadastrada com sucesso! :)"
+						tituloToast: `Vaga cadastrada com sucesso! :)`,
+						descricaoToast: "Parabéns, agora sua vaga poderá ser consultada por milhares de profissionais, uhul!"
 					}
 				};
 			},

@@ -9,6 +9,7 @@
 						type="text"
 						class="form-control"
 						placeholder="Pesquise por palavras chaves, por ex. 'PHP', 'Pleno', 'Analista'"
+						v-model="tituloFiltrado"
 					/>
 					<small class="form-text text-muted"
 						>Informe Palavras que estejam relacionadas com a
@@ -20,7 +21,12 @@
 
 		<div class="row">
 			<div class="col">
-				<button class="btn btn-outline-dark mt-2">Buscar</button>
+				<button
+					class="btn btn-outline-dark mt-2"
+					@click="handleFiltro(tituloFiltrado)"
+				>
+					Buscar
+				</button>
 			</div>
 		</div>
 	</div>
@@ -28,7 +34,25 @@
 
 <script>
 	export default {
-		name: "PesquisarVagas"
+		name: "PesquisarVagas",
+		data() {
+			return {
+				tituloFiltrado: ""
+			};
+		},
+		methods: {
+			handleFiltro(title) {
+				this.emitter.emit("vagaFiltrada", title);
+			}
+		},
+
+		watch: {
+			tituloFiltrado(newValue) {
+				if (!newValue) {
+					this.emitter.emit("vagaFiltrada", newValue);
+				}
+			}
+		}
 	};
 </script>
 
