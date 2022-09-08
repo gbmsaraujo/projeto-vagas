@@ -1,7 +1,7 @@
 # Projeto Vagas
 Projeto desenvolvido em Vue.js para mostrar vagas em tecnologia.
 
-#Tecnologias Utilizadas
+# Tecnologias Utilizadas
 
 - Vue.js
 - Bootstrap
